@@ -1,1 +1,4 @@
-# fundamentos_phyton
+# Fundamentos de Phyton
+
+Autor:
+José C. Encarnación
