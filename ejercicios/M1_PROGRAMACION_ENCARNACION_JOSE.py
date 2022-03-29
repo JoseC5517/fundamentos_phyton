@@ -30,3 +30,11 @@ else:
     print(f"La divicion de {num} / {num2} = {num/num2}")
   else:
     print(f"ERROR: NO SE PUEDE DIVIDIR{num} entre CERO.")
+
+    
+veri=input("Desea mostrar la tabla de multiplicar de su edad (y/n): ")
+if veri == "y" or veri == "Y":
+  for x in range(1,13):
+    print(f"{edad} * {x} = {edad*x}")
+else:
+  print("*FIN DE EJECUCION*")
