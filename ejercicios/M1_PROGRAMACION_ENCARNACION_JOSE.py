@@ -26,4 +26,7 @@ elif op == 2:
 elif op == 3:
   print(f"La multiplicacion de {num} * {num2} = {num*num2}")
 else:
-  print(f"La divicion de {num} / {num2} = {num/num2}")
+  if num2 != 0:
+    print(f"La divicion de {num} / {num2} = {num/num2}")
+  else:
+    print(f"ERROR: NO SE PUEDE DIVIDIR{num} entre CERO.")
