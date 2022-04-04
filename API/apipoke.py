@@ -5,7 +5,7 @@ respuesta1 = requests.get(url1)
 dt=respuesta1.json()
 
 while 1 == 1:
-  usuario = int(input("Digite el ID del pokemon: "))
+  usuario = int(input(f"Digite el ID del pokemon entre 1 y {dt['count']}: "))
   if usuario in range(1,dt["count"]+1):
     break
     
