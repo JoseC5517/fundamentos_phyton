@@ -12,6 +12,8 @@ while 1 == 1:
 url = f"https://pokeapi.co/api/v2/pokemon/{usuario}"
 respuesta = requests.get(url)
 
+print(respuesta.status_code)
+
 if respuesta:
   datos=respuesta.json()
   habilidades = []
