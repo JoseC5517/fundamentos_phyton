@@ -21,6 +21,8 @@ print(primeroUltimo)
 
 primero = primeroUltimo[0]
 ultimo = primeroUltimo[1]
+
+
 id_digitado = input(f"Digite un id [{primero}-{ultimo}]:")
 resultado = re.search(REGEX_NUMBERS, id_digitado)
 while(not re.search(REGEX_NUMBERS, id_digitado)) or (int(id_digitado) < primero or int(id_digitado) > ultimo):
@@ -28,6 +30,7 @@ while(not re.search(REGEX_NUMBERS, id_digitado)) or (int(id_digitado) < primero 
 
 url1 = BASE_URL + f"pokemon/{id_digitado}"
 respuesta11 = requests.get(url1)
+
 if respuesta11:
   datos=respuesta11.json()
 print ("{:<5} {:<15} {:<10} {:<20} {:<10}".format('ID','Nombre','Altura','# de Habilidad', '# de Movimientos\n'))

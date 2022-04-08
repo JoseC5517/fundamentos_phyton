@@ -49,8 +49,14 @@ def habilidadesPoke(datos):
     print("{:<5} {:<40} ".format(id,nombre))
 def verPokemon():
   print("ver pokemon")
+  
 def buscarPokemonPorId():
   print("Buscando ID")
+  id_digitado = input(f"Digite un id [{primero}-{ultimo}]:")
+  resultado = re.search(REGEX_NUMBERS, id_digitado)
+  while(not re.search(REGEX_NUMBERS, id_digitado)) or (int(id_digitado) < primero or int(id_digitado) > ultimo):
+    id_digitado = input(f"Digite un id [{primero}-{ultimo}]:")
+
 def buscarPokemonPorNombre():
   print("Buscando pokemon")
 def salir():
