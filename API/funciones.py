@@ -56,8 +56,17 @@ def tiposPoke(datos):
     nombre = datos['types'][tipo]['type']['name']
     print("{:<5} {:<40} ".format(id,nombre))
     
-def verPokemon(BASE_URL,id_digitado):
+def verPokemonID(BASE_URL,id_digitado):
   url1 = BASE_URL + f"pokemon/{id_digitado}"
+  respuesta11 = requests.get(url1)
+  if respuesta11:
+    datos=respuesta11.json()
+  print ("{:<5} {:<15} {:<10} {:<20} {:<10}".format('ID','Nombre','Altura','# de Habilidad', '# de Movimientos\n'))
+  print ("{:<5} {:<15} {:<10} {:<20} {:<10}".format(id_digitado,datos['name'],int(datos['weight'])/10,datos['height']/10, len(datos['abilities'])))
+  return datos
+
+def verPokemonnom(BASE_URL,nom_digitado):
+  url1 = BASE_URL + f"pokemon/{nom_digitado}"
   respuesta11 = requests.get(url1)
   if respuesta11:
     datos=respuesta11.json()
@@ -72,7 +81,12 @@ def buscarPokemonPorId(primero,ultimo,REGEX_NUMBERS):
     id_digitado = input(f"Digite un id [{primero}-{ultimo}]:")
   return id_digitado
   
-def buscarPokemonPorNombre():
-  print("Buscando pokemon")
+def buscarPokemonPorNombre(REGEX_NOMBRES):
+  nom_digitado = input(f"Digite un nombre:")
+  resultado = re.search(REGEX_NOMBRES, nom_digitado)
+  while(not re.search(REGEX_NOMBRES, nom_digitado)):
+    nom_digitado = input(f"Digite un nombre:") 
+    
+  return nom_digitado
 def salir():
   print("bye")
