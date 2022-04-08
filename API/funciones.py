@@ -39,7 +39,6 @@ def verListado(url):
 
   # ultimo = int(id_pokemon)
 def habilidadesPoke(datos):
-  habilidades = []
   print("\n\nhabilidades:\n")
   print ("{:<5} {:<40} ".format('ID','Nombre'))
   print("-"*20)
@@ -47,16 +46,32 @@ def habilidadesPoke(datos):
     id = datos['abilities'][habilidad]['ability']['url'].split('/')[6]
     nombre = datos['abilities'][habilidad]['ability']['name']
     print("{:<5} {:<40} ".format(id,nombre))
-def verPokemon():
-  print("ver pokemon")
+    
+def tiposPoke(datos):
+  print("\n\ntipos:\n")
+  print ("{:<5} {:<40} ".format('ID','Nombre'))
+  print("-"*20)
+  for tipo in range(len(datos['types'])):
+    id = datos['types'][tipo]['type']['url'].split('/')[6]
+    nombre = datos['types'][tipo]['type']['name']
+    print("{:<5} {:<40} ".format(id,nombre))
+    
+def verPokemon(BASE_URL,id_digitado):
+  url1 = BASE_URL + f"pokemon/{id_digitado}"
+  respuesta11 = requests.get(url1)
+  if respuesta11:
+    datos=respuesta11.json()
+  print ("{:<5} {:<15} {:<10} {:<20} {:<10}".format('ID','Nombre','Altura','# de Habilidad', '# de Movimientos\n'))
+  print ("{:<5} {:<15} {:<10} {:<20} {:<10}".format(id_digitado,datos['name'],int(datos['weight'])/10,datos['height']/10, len(datos['abilities'])))
+  return datos
   
-def buscarPokemonPorId():
-  print("Buscando ID")
+def buscarPokemonPorId(primero,ultimo,REGEX_NUMBERS):
   id_digitado = input(f"Digite un id [{primero}-{ultimo}]:")
   resultado = re.search(REGEX_NUMBERS, id_digitado)
   while(not re.search(REGEX_NUMBERS, id_digitado)) or (int(id_digitado) < primero or int(id_digitado) > ultimo):
     id_digitado = input(f"Digite un id [{primero}-{ultimo}]:")
-
+  return id_digitado
+  
 def buscarPokemonPorNombre():
   print("Buscando pokemon")
 def salir():
